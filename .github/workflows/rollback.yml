@@ -1,0 +1,23 @@
+name: Rollback Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      rollback_version:
+        description: 'Enter the version folder to roll back to (e.g. v20250420235559)'
+        required: true
+        default: 'vYYYYMMDDHHMMSS'
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Rollback to version ${{ github.event.inputs.rollback_version }}
+        run: |
+          echo "Rolling back to ${{ github.event.inputs.rollback_version }}"
+          aws s3 sync s3://raasystem.net/${{ github.event.inputs.rollback_version }}/ s3://raasystem.net/latest/ --delete --acl public-read
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-west-2
