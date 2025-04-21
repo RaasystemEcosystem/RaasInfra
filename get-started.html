@@ -1,0 +1,195 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Raasystem | Get Started</title>
+  <link rel="stylesheet" href="css/styles.css">
+<style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #000;
+      padding: 14px 0;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo {
+      color: white;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+
+    nav ul li a.active {
+      background-color: #fff;
+      color: #000;
+    }
+
+    nav ul li a:hover {
+      background-color: #004080;
+      color: white;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #004080, #0074d9);
+      color: white;
+      padding: 100px 20px 60px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      color: #004080;
+      margin-bottom: 20px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .step {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-4px);
+    }
+
+    .step h3 {
+      margin-top: 0;
+      color: #004080;
+    }
+
+    footer {
+      background-color: #f1f1f1;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="header-container">
+      <div class="logo">Raasystem</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="integrations.html">Integrations</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="get-started.html" class="active">Get Started</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Get Started</h1>
+    <p>Begin your journey with Raasystem and unlock decentralized finance powered by real assets.</p>
+  </div>
+
+  <!-- Getting Started Steps -->
+  <div class="section">
+    <div class="steps-grid">
+      <div class="step">
+        <h3>1. Create a Wallet</h3>
+        <p>Download Raaswallet or connect your MetaMask wallet to access the Raasystem ecosystem securely.</p>
+      </div>
+      <div class="step">
+        <h3>2. Fund Your Wallet</h3>
+        <p>Acquire Raaskoin through RABEX or transfer supported assets to your wallet for trading and payments.</p>
+      </div>
+      <div class="step">
+        <h3>3. Explore RABEX</h3>
+        <p>Use our AI-driven trading engine to trade Raaskoin, Raastoken, and other assets with precision and automation.</p>
+      </div>
+      <div class="step">
+        <h3>4. Use Raaspay</h3>
+        <p>Make real-time payments using Raaskoin, with instant settlement and optional fiat conversion for merchants.</p>
+      </div>
+      <div class="step">
+        <h3>5. Stake & Govern</h3>
+        <p>Stake Raastoken to participate in community voting and earn ecosystem rewards for your engagement.</p>
+      </div>
+      <div class="step">
+        <h3>6. Access Resources</h3>
+        <p>Visit the Resources page for documentation, API guides, tutorials, and updates to build with or integrate Raasystem.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Raasystem. All rights reserved.
+  </footer>
+
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.body.insertAdjacentHTML("beforeend", data));
+  </script>
+
+</body>
+</html>
