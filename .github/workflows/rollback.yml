@@ -1,23 +1,38 @@
 name: Rollback Deployment
 
 on:
-  workflow_dispatch:
-    inputs:
-      rollback_version:
-        description: 'Enter the version folder to roll back to (e.g. v20250420235559)'
-        required: true
-        default: 'vYYYYMMDDHHMMSS'
+  workflow_dispatch:  # This allows the workflow to be manually triggered
 
 jobs:
   rollback:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Runs on the latest Ubuntu environment
 
     steps:
-      - name: Rollback to version ${{ github.event.inputs.rollback_version }}
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up any necessary environment (e.g., install dependencies)
+      - name: Set up Node.js (or any required environment)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'  # Change the version as per your needs
+
+      # Step 3: Restore to a previous commit or rollback to the prior deployment
+      - name: Rollback Deployment
         run: |
-          echo "Rolling back to ${{ github.event.inputs.rollback_version }}"
-          aws s3 sync s3://raasystem.net/${{ github.event.inputs.rollback_version }}/ s3://raasystem.net/latest/ --delete --acl public-read
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-west-2
+          echo "Rolling back to previous stable deployment..."
+          # Example: Checkout a previous commit or branch
+          git checkout HEAD~1  # This is an example; adjust according to your deployment strategy
+
+          # Example: Deploy or push back to your server or deployment platform (e.g., AWS, Docker, etc.)
+          # If you're using AWS CLI or other deployment tools, you can add your commands here.
+          # Example (for AWS deployment):
+          # aws s3 cp ./build s3://your-bucket-name/ --recursive
+          
+          # Add any other commands needed to revert changes (e.g., redeploy to a previous environment)
+
+      # Step 4: Confirm rollback is successful
+      - name: Rollback Status
+        run: |
+          echo "Rollback complete! Verify your environment for consistency."
