@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Raasystem | Login & Signup</title>
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #1a1a1a;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+      width: 100%;
+      max-width: 420px;
+      transition: all 0.3s ease;
+    }
+
+    .container h1 {
+      text-align: center;
+      color: #ffd700;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      background: #333;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ffd700;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #e6c200;
+    }
+
+    .toggle-text {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .toggle-text span {
+      color: #ffd700;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="form-title">Welcome to Raasystem</h1>
+
+    <!-- Login Form -->
+    <form id="login-form" action="/wallet/" method="GET">
+      <div class="form-group">
+        <input type="text" name="username" placeholder="Username" required />
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Password" required />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signup-form" class="hidden" action="/register/" method="POST">
+      <div class="form-group">
+        <input type="text" name="username" placeholder="Choose a Username" required />
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Email Address" required />
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Create Password" required />
+      </div>
+      <button type="submit">Create Account</button>
+    </form>
+
+    <!-- Toggle -->
+    <div class="toggle-text">
+      <span id="toggle-link">Don't have an account? Create one</span>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+    const toggleLink = document.getElementById('toggle-link');
+    const formTitle = document.getElementById('form-title');
+
+    toggleLink.addEventListener('click', () => {
+      loginForm.classList.toggle('hidden');
+      signupForm.classList.toggle('hidden');
+
+      if (loginForm.classList.contains('hidden')) {
+        formTitle.textContent = 'Create Your Raasystem Account';
+        toggleLink.textContent = 'Already have an account? Login';
+      } else {
+        formTitle.textContent = 'Welcome to Raasystem';
+        toggleLink.textContent = "Don't have an account? Create one";
+      }
+    });
+  </script>
+</body>
+</html>
